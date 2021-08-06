@@ -11,7 +11,7 @@ class userStorage {
         if (err) {
           reject(err);
         }
-          resolve(data[0]);
+        resolve(data[0]);
       });
     });
   };
@@ -22,7 +22,6 @@ class userStorage {
       bcrypt.hash(user.password, saltRounds, (err, hash) => {
         user.password = hash;
         const query = "INSERT INTO users(id, name, password) VALUES(?, ?, ? )";
-        
         db.query(query, [user.id, user.name, user.password], (err) => {
           if (err) reject(err);
           resolve({ success: true, msg: " Sign Up Success!" });
@@ -32,7 +31,6 @@ class userStorage {
   };
 
   static saveComment(user) {
-    console.log(user);
     return new Promise ((resolve, reject) => {
       const query = "INSERT INTO comments(commenter, comment) VALUES((SELECT id FROM users WHERE id=?), ?)";
       db.query(query, [user.id, user.comment], (err) => {

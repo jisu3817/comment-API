@@ -20,7 +20,6 @@ const output = {
 const process = {
   login: async (req, res) => {
     const user = new User(req.body);
-    console.log(req.body);
     const response = await user.login();
 
     if (response.success) {
@@ -51,7 +50,7 @@ const process = {
     const token = req.cookies['token'];
     if (token === undefined) {
       res.json('로그인 후 이용해주세요.');
-    }
+    };
     const payload = jwt.verifyToken(token);
     if (payload.id === req.body.id) {
       const user = new User(req.body);

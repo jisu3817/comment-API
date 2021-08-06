@@ -39,7 +39,6 @@ class User {
     const user = this.body;
     try {
       const response = await UserStorage.saveComment(user);
-      console.log(response);
       return response;
     } catch (err) {
       return {success: false, msg: err.sqlmessage };
