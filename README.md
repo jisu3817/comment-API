@@ -1,5 +1,5 @@
 comments-API
-댓글 기능을 구현한 API
+댓글 API 기능 
 
 <br>
 
